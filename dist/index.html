@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Weather</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <script id="cities-template" type="text/x-handlebars-template">
+        
+            {{#each this}}
+            <div class="box">
+                <i class="fa fa-plus-circle" id="add-button"></i>
+                <i class="fa fa-minus-circle" id="delete-button"></i>
+                <div class="temp">{{this.temperature}}</div>
+                <div class="name">{{this.name}}</div>
+                <img class="image" src="{{this.conditionPic}}">
+                <div class="condition">{{this.condition}}</div>
+                <div class="update-time">{{this.updatedAt}}</div>
+            </div>
+            {{/each}}
+          
+    </script>
+    <input type="text" id="city-input">
+    <button id="search-btn" onclick = handleSearch()>Search</button>
+    <div class="result"></div>
+
+    <script src="handlebars/dist/handlebars.js"></script>
+    <script src="jquery/dist/jquery.js"></script>
+    <script src="Renderer.js"></script>
+    <script src="TempManager.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
