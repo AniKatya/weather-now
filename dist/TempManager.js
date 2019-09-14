@@ -9,26 +9,14 @@ class TempManager {
     }
 
     async getCityData(cityName) {
+        this.cityData = this.cityData.filter(c => c.name !== cityName)
         let data = await $.get(`city/:${cityName}`)
-        this.cityData.push({
-            'name': data.location.name,
-            'temperature': data.current.temp_c,
-            'condition': data.current.condition.text,
-            'conditionPic': data.current.condition.icon,
-            'updatedAt': data.current.last_updated
-        })
+        this.cityData.push(data)
     }
-   
+
     saveCity(cityName) {
         let ourCityData = this.cityData.find(c => c.name === cityName)
-        const cityObject = {
-            name: ourCityData.name,
-            updatedAt: ourCityData.updatedAt,
-            temperature: ourCityData.temperature,
-            condition: ourCityData.condition,
-            conditionPic: ourCityData.conditionPic
-        }
-        $.post(`/city`, cityObject, function () {
+        $.post(`/city`, ourCityData, function (res) {
             console.log("POST complete")
         })
     }
