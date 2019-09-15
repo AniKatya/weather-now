@@ -1,6 +1,7 @@
 html{
-    background-image: url("https://png.pngtree.com/thumb_back/fw800/background/20190222/ourmid/pngtree-atmospheric-clouds-beautiful-dream-universe-h5-background-girldreamblue-purple-powder-image_57877.jpg");
-    background-size: 100vh 100vw;
+    /* background-image: url("https://png.pngtree.com/thumb_back/fw800/background/20190222/ourmid/pngtree-atmospheric-clouds-beautiful-dream-universe-h5-background-girldreamblue-purple-powder-image_57877.jpg"); */
+    background-image: url("https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwi0woDOkNLkAhXMYlAKHYwPD5AQjRx6BAgBEAQ&url=https%3A%2F%2Fdepositphotos.com%2F101524102%2Fstock-photo-purple-pink-morning-sky-background.html&psig=AOvVaw1VTiUpHfSC6RF1q_kF7wdq&ust=1568611875551958");
+    background-size: 100vh;
 }
 
 .box{
