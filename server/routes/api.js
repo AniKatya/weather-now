@@ -4,7 +4,7 @@ const City = require("../model/City.js")
 const request = require('request')
 const moment = require('moment');
 
-const url = 'http://api.apixu.com/v1/current.json?key=42b5a646298c4d8994d141522191707&q='
+const url = 'http://api.weatherstack.com/current?access_key=2911c30dc1c85ba2039ea8e41733a2c9&query='
 
 router.get('/city/:cityName', function (req, res) {
     let cityName = req.params.cityName
