@@ -15,10 +15,10 @@ router.get('/city/:cityName', function (req, res) {
         } else {
             res.send({
                 name: cityData.location.name,
-                updatedAt: cityData.current.observation_time,
+                updatedAt: moment().format('MMMM Do YYYY, h:mm:ss a'),
                 temperature: cityData.current.temperature,
-                condition: cityData.current.weather_descriptions,
-                conditionPic: cityData.current. weather_icons
+                condition: cityData.current.weather_descriptions[0],
+                conditionPic: cityData.current. weather_icons[0]
             })
         }
     })
