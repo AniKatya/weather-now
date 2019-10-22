@@ -18,7 +18,7 @@ router.get('/city/:cityName', function (req, res) {
                 updatedAt: moment(cityData.current.last_updated).format('LL'),
                 temperature: cityData.current.temp_c,
                 condition: cityData.current.condition.text,
-                conditionPic: cityData.current.condition.icon
+                conditionPic: cityData.current. weather_icons
             })
         }
     })
