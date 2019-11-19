@@ -20,7 +20,9 @@ html{
 .image{
     grid-row-start: 2;
     justify-self: center;
-    align-self: center
+    align-self: center;
+    border-radius: 50%;
+
 }
 
 .update-time{
