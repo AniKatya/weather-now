@@ -1,25 +1,41 @@
 class TempManager {
     constructor() {
-        this.cityData = []
+        this.searchOutput,
+            this.favCities = [],
+            this.localCity = {}
     }
 
     async getDataFromDB() {
-        let data = await $.get('/cities')
-        this.cityData = data
+        let citiesData = await $.get('/cities');
+        this.favCities = citiesData;
     }
 
     async getCityData(cityName) {
-        this.cityData = this.cityData.filter(c => c.name !== cityName)
-        let data = await $.get(`city/:${cityName}`)
-        this.cityData.push(data)
+        let cityData = await $.get(`city/${cityName}`)
+        cityData.star = "star_border";
+        this.searchOutput = cityData;
+    }
+
+    async getLocalCityData(lat, lon) {
+        let localCityData = await $.get(`city/${lat}/${lon}`)
+        this.localCity = localCityData;
     }
 
     saveCity(cityName) {
-        let ourCityData = this.cityData.find(c => c.name === cityName)
-        $.post(`/city`, ourCityData, function (res) {
-            console.log("POST complete")
-        })
+        let savedBefore = this.favCities.some(c => c.name.toLowerCase() == cityName.toLowerCase());
+        if (savedBefore == false) {
+            const savedCity = this.searchOutput;
+            console.log("inside saved city")
+            savedCity.star = "star";
+            this.favCities.push(savedCity)
+            $.post(`/city`, savedCity, function (res) {
+                console.log("POST complete")}
+            )
+        } else {
+            M.toast({html: 'The city already exists in the list of favourite locations', classes: 'rounded'})
+        }
     }
+
     removeCity(cityName) {
         $.ajax({
             url: `/city/${cityName}`,

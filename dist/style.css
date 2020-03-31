@@ -1,64 +1,182 @@
-html{
-    background-image: url("https://png.pngtree.com/thumb_back/fw800/background/20190222/ourmid/pngtree-atmospheric-clouds-beautiful-dream-universe-h5-background-girldreamblue-purple-powder-image_57877.jpg");
+* {
+    font-family: 'Open Sans', sans-serif;
+
+}
+
+body{
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
     height:100%;
 }
 
+.search-bar {
+    margin-left: 35px;
+}
+
+.all-box-container {
+    display: grid;
+    grid-template-areas: 
+    "search-result main-result"
+    "result main-result";
+}
+
+.arrow {
+    font-size: 50px;
+    color: white;
+    margin-left: 25vw;
+}
+
+.search-result {
+    grid-area: search-result;
+}
+
+.result{
+    grid-area: result;
+}
+
+.main-result {
+    grid-area: main-result;
+}
+
+.box-container {
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    max-height: 41vh;
+}
+
+.box-container::-webkit-scrollbar{
+    display: none;
+}
+
 .box{
-    background-color: rgba(94, 167, 216, 0.2);
-    margin:30px;
+    background-color: rgba(184, 216, 226, 0.5);
+    margin:0 1rem 1rem 1rem;
+    width: 50vw;
     border-radius: 20px;
     display: grid;
-    height: 100px;
     grid-template-columns: 30% 30% 40%;
     grid-template-rows: 40% 40% 20%;
-    padding:10px;
-    font-family: 'Roboto', sans-serif
+    padding:20px;
+}
+.fav-city-box {
+    height: 19vh;
+
+}
+.main-box {
+    grid-area: main-box;
+    height: 80vh;
+    width: 45vw;
+    float: right;
+    display: grid;
+    padding:30px;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 20% 10% 10% 20% 29% 1%;
+
 }
 
 .image{
-    grid-row-start: 2;
+    grid-row: 2;
+    grid-column:2;
     justify-self: center;
     align-self: center;
     border-radius: 50%;
+}
 
+.main-box .image{
+    height: 105%;
+    grid-row-start: 3;
+    grid-row-end: 5;
+    grid-column: 2;
+    align-self: center;
+}
+
+.condition {
+    justify-self: center;
+    grid-row: 2;
+    grid-column: 1;
+    font-size: 1.25rem;
+    align-self: center;
+}
+
+.main-box .condition {
+    grid-row: 5;
+    grid-column: 2;
+    font-size: 1.75rem;
 }
 
 .update-time{
-    grid-column-start:3;
-    font-size: 10px;
+    grid-column:3;
+    font-size: 1rem;
     align-self: center;
     justify-self: center
 }
 
+.main-box .update-time {
+    font-size: 1.25rem;
+    grid-row: 6;
+    grid-column-start: 2;
+    grid-column-end: 4;
+    justify-self: flex-end;
+    align-self: baseline;
+}
+
+
+.windSpeed {
+    justify-self: center;
+    align-self: center;
+    font-size: 1.5rem;
+    grid-row: 4;
+    grid-column: 1;
+}
+
+.humidity {
+    justify-self: center;
+    align-self: center;
+    font-size: 1.5rem;
+    grid-row: 4;
+    grid-column: 3;
+}
+
 .temp, .name{
     justify-self: center;
-    font-size: 20px;
+    font-size: 1.5rem;
     font-weight: bolder
 }
 
-.condition{
-    justify-self: center;
-    grid-row-start: 2;
-    align-self: center
+.main-box .temp {
+    font-size: 2rem;
+    grid-row: 2;
+    grid-column:2;
 }
-#delete-button{
-    color: #cf2929;
-    grid-row-start: 2;
-    grid-column-start: 1;
+
+.main-box .name{
+    font-size: 2rem;
+    grid-row: 1;
+    grid-column: 2;
+    text-align: center;
 }
 
 #add-button{
-    color:rgb(53, 138, 53);
+    color: #ffdd59;
+    font-size: 200%;
 }
 
 #city-input{
-    align-items: center;
-    border-radius: 20px;
+    margin: 30px;
+    font-size: 1.5rem;
+    width: 20%;
+    text-align: center;
 }
 
-#search-btn{
-    border-radius: 20px;
-    background-color: rgba(94, 167, 216, 0.5);
+#search-btn {
+    border-radius: 20px !important;
+    padding: 10px;
+    width: 10%;
 }
+
+#location-icon {
+    color: #4b6584;
+    font-size: 200%;
+}
+

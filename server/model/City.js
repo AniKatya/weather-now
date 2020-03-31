@@ -6,7 +6,8 @@ const citySchema = new Schema({
     updatedAt: String,
     temperature: String,
     condition: String,
-    conditionPic: String
+    conditionPic: String,
+    star: String
 })
 
 const City = mongoose.model("City", citySchema)
