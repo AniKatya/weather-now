@@ -8,7 +8,7 @@
     <title>Weather</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="css/materialize.css" media="screen,projection" />
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -17,9 +17,9 @@
         <input placeholder="City" id="city-input" type="text" class="validate">
         <a id="search-button" class="waves-effect waves-light btn-large" onClick=handleSearch()>Search</a>
     </form>
-    <div class="all-box-container">
+    <div class="main-container">
         <script id="search-output-template" type="text/x-handlebars-template">
-            <div class="box-container-search">
+            <div class="search-output-container">
                 <div class="box">
                     <i class="material-icons" id="add-button">{{star}}</i>
                     <div class="temp">{{temperature}}</div>
@@ -32,43 +32,45 @@
         </script>
         <script id="cities-template" type="text/x-handlebars-template">
             <i class="material-icons arrow arrow-up" id="arrow-up-icon" hidden onclick=scrollToTop()>keyboard_arrow_up</i>
-        <div class="box-container">
-            {{#each this}}
-            <div class="box fav-city-box">
-                <i class="material-icons" id="add-button">{{this.star}}</i>
-                <div class="temp">{{this.temperature}}</div>
-                <div class="name">{{this.name}}</div>
-                <img class="image" src="{{this.conditionPic}}">
-                <div class="condition">{{this.condition}}</div>
-                <div class="update-time">{{this.updatedAt}}</div>
+            <div class="favourites-container">
+                {{#each this}}
+                <div class="box fav-city-box">
+                    <i class="material-icons" id="add-button">star</i>
+                    <div class="temp">{{this.temperature}}</div>
+                    <div class="name">{{this.name}}</div>
+                    <img class="image" src="{{this.conditionPic}}">
+                    <div class="condition">{{this.condition}}</div>
+                    <div class="update-time">{{this.updatedAt}}</div>
+                </div>
+                {{/each}}
             </div>
-            {{/each}}
-        </div>
-        <i class="material-icons arrow arrow-down" id="arrow-down-icon" hidden onclick=scrollToBottom()>keyboard_arrow_down</i>
-    </script>
+            <i class="material-icons arrow arrow-down" id="arrow-down-icon" hidden onclick=scrollToBottom()>keyboard_arrow_down</i>
+        </script>
         <script id="local-city-template" type="text/x-handlebars-template">
-            <div class="box main-box">
-                <i class="material-icons" id="location-icon">location_on</i>
-                <div class="temp">{{temperature}}</div>
-                <div class="humidity">Humidity<br>{{humidity}}</div>
-                <div class="windSpeed">Wind <br> {{windSpeed}}</div>
-                <div class="name">{{name}}</div>
-                <img class="image" src="{{conditionPic}}">
-                <div class="condition">{{condition}}</div>
-                <div class="update-time">{{updatedAt}}</div>
-          </div>
-        </div>
-    </script>
-        <div class="search-result"></div>
-        <div class="result"></div>
-        <div class="main-result"></div>
+            <div class="local-city-container">
+                <div class="box local-city-box">
+                    <i class="material-icons" id="location-icon" onclick=getLocation()>location_on</i>
+                    <div class="temp">{{temperature}}</div>
+                    <div class="humidity">Humidity<br>{{humidity}}</div>
+                    <div class="windSpeed">Wind <br> {{windSpeed}}</div>
+                    <div class="name">{{name}}</div>
+                    <img class="image" src="{{conditionPic}}">
+                    <div class="condition">{{condition}}</div>
+                    <div class="update-time">{{updatedAt}}</div>
+                </div>
+            </div>
     </div>
-    <script src="handlebars/dist/handlebars.js"></script>
-    <script src="jquery/dist/jquery.js"></script>
-    <script src="Renderer.js"></script>
-    <script src="TempManager.js"></script>
-    <script src="main.js"></script>
-    <script type="text/javascript" src="js/materialize.min.js"></script>
+    </script>
+    <div class="search-result"></div>
+    <div class="fav-result"></div>
+    <div class="local-result"></div>
+    </div>
+    <script src="handlebars/dist/handlebars.js "></script>
+    <script src="jquery/dist/jquery.js "></script>
+    <script src="Renderer.js "></script>
+    <script src="TempManager.js "></script>
+    <script src="main.js "></script>
+    <script type="text/javascript " src="js/materialize.min.js "></script>
 </body>
 
 </html>

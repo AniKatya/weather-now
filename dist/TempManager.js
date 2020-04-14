@@ -6,8 +6,16 @@ class TempManager {
     }
 
     async getDataFromDB() {
-        let citiesData = await $.get('/cities');
-        this.favCities = citiesData;
+        let favCities = await $.get('/cities');
+        favCities.forEach(city => getFavCityData(city.name));
+        let favCitiesData = [];
+
+        function getFavCityData(cityName) {
+            $.get(`/city/${cityName}`, cityName, function(res, err) {
+                favCitiesData.push(res)
+            })
+        }
+        this.favCities = favCitiesData;
     }
 
     async getCityData(cityName) {
@@ -23,16 +31,15 @@ class TempManager {
 
     saveCity(cityName) {
         let savedBefore = this.favCities.some(c => c.name.toLowerCase() == cityName.toLowerCase());
-        if (savedBefore == false) {
+        if (!savedBefore) {
             const savedCity = this.searchOutput;
-            console.log("inside saved city")
             savedCity.star = "star";
             this.favCities.push(savedCity)
-            $.post(`/city`, savedCity, function (res) {
-                console.log("POST complete")}
-            )
+            $.post(`/city`, savedCity, function(res) {
+                console.log("POST complete")
+            })
         } else {
-            M.toast({html: 'The city already exists in the list of favourite locations', classes: 'rounded'})
+            M.toast({ html: 'The city already exists in the list of favourite locations', classes: 'rounded' })
         }
     }
 
@@ -40,10 +47,7 @@ class TempManager {
         $.ajax({
             url: `/city/${cityName}`,
             type: 'DELETE',
-            success: function () {
-            }
+            success: function() {}
         })
     }
 }
-
-
