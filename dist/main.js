@@ -6,7 +6,8 @@ const loadPage = async function() {
     await tempManager.getDataFromDB();
     getLocation();
     setTimeout(function() {
-        renderer.render(tempManager.favCities);
+        // render(cityData, templateName, classToAppend)
+        renderer.render(tempManager.favCities, "#cities-template", ".fav-result");
         tempManager.favCities.length > 0 ? $(".arrow").show() : null;
     }, 500);
 };
@@ -15,7 +16,9 @@ const loadPage = async function() {
 const handleSearch = async function() {
     let cityInput = $("#city-input").val();
     await tempManager.getCityData(cityInput);
-    renderer.renderSearchOutput(tempManager.searchOutput);
+    // render(cityData, templateName, classToAppend)
+    renderer.render(tempManager.searchOutput, "#search-output-template", ".search-result");
+    $("#city-input").val("");
 };
 
 
@@ -48,7 +51,8 @@ async function getLocation() {
 
 async function showPosition(position) {
     await tempManager.getLocalCityData(position.coords.latitude, position.coords.longitude);
-    renderer.renderLocal(tempManager.localCity);
+    // render(cityData, templateName, classToAppend)
+    renderer.render(tempManager.localCity, "#local-city-template", ".local-result");
 
     if (tempManager.localCity.localTime > tempManager.localCity.sunset || tempManager.localCity.localTime < tempManager.localCity.sunrise) {
         document.body.style.backgroundImage = "url('night2.jpeg')";
